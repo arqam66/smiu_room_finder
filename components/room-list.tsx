@@ -2,7 +2,6 @@
 
 import { useState } from "react"
 import { DoorOpenIcon as Door, ChevronRight, Search, Building, Layers } from "lucide-react"
-import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
 // Import the Room type and RoomListProps interface

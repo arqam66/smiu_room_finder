@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
-import { Search, Building, Layers, Menu, X, Github, ChevronRight } from "lucide-react"
+import { Search, Building, Layers, X, Github, ChevronRight } from "lucide-react"
 import CampusMap from "./campus-map"
 import RoomList from "./room-list"
 import { roomData } from "@/lib/room-data"
@@ -19,7 +19,6 @@ export default function RoomFinder() {
   const [selectedRoom, setSelectedRoom] = useState<Room | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [showSearchResults, setShowSearchResults] = useState(false)
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   // Get unique buildings
   const buildings = [...new Set(roomData.map((room) => room.building))]
@@ -51,7 +50,6 @@ export default function RoomFinder() {
   const handleRoomSelect = (room: Room) => {
     setSelectedRoom(room)
     setIsModalOpen(true)
-    setMobileMenuOpen(false)
     setShowSearchResults(false)
     setSearchQuery("")
   }

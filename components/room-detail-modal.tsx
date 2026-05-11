@@ -1,7 +1,7 @@
 "use client"
 
 import { MapPin, Info, X } from "lucide-react"
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import { Dialog, DialogContent } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 
 // Import the Room type and RoomDetailModalProps interface
