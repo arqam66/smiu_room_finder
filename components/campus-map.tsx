@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils"
 // Import the CampusMapProps interface
 import type { CampusMapProps } from "@/types/room"
 
-const buildingPositions = {
+const buildingPositions: Record<string, { top: string; left: string }> = {
   "Main Building": { top: "30%", left: "50%" },
   "Talpur House": { top: "60%", left: "30%" },
   "Auxiliary Building": { top: "40%", left: "70%" },
@@ -17,18 +17,18 @@ const buildingPositions = {
 
 // Update the component definition with proper typing
 export default function CampusMap({ buildings, selectedBuilding, onBuildingSelect, filteredRooms }: CampusMapProps) {
-  const [hoveredBuilding, setHoveredBuilding] = useState(null)
+  const [hoveredBuilding, setHoveredBuilding] = useState<string | null>(null)
 
   // Count rooms per building from filtered rooms
-  const roomCounts = filteredRooms.reduce((acc, room) => {
+  const roomCounts = filteredRooms.reduce((acc: Record<string, number>, room) => {
     acc[room.building] = (acc[room.building] || 0) + 1
     return acc
   }, {})
 
   return (
-    <div className="relative w-full h-[300px] sm:h-[350px] md:h-[400px] lg:h-[450px] xl:h-[500px] bg-gray-950/70 rounded-lg overflow-hidden border border-gray-800/50 shadow-inner">
-      {/* Map background with grid lines */}
-      <div className="absolute inset-0 grid grid-cols-12 grid-rows-12 opacity-20">
+    <div className="relative w-full h-[350px] sm:h-[400px] md:h-[450px] lg:h-[500px] xl:h-[600px] bg-gray-950/80 rounded-[2.5rem] overflow-hidden border border-gray-800/50 shadow-2xl transition-all duration-700">
+      {/* Map background with animated grid lines */}
+      <div className="absolute inset-0 grid grid-cols-12 grid-rows-12 opacity-10">
         {Array(12)
           .fill(0)
           .map((_, i) => (
